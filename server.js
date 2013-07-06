@@ -18,18 +18,26 @@ var server = http.createServer(app);
 
 });*/
 
-server.listen(8000);
+server.listen(process.argv[2]);
 
-console.log('Listening on port 8000');
+console.log('Listening on port ' + process.argv[2]);
 
-// Create the websocket
+// Create the websocket and have it listen to the server
 
 var io = io.listen(server);
 
+// On every socket connection
+
 io.sockets.on('connection', function (socket) {
  
+  // Check to see if a new chat message is posted
+
   socket.on('postMessage', function (data) {
-      io.sockets.emit('returnMessage', { message: data.message });
+
+  	// If so, send the chat message to all clients
+
+  	io.sockets.emit('returnMessage', { message: data.message });
+  	
   });
 
 });

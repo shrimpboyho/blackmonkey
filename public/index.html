@@ -2,15 +2,23 @@
 
 	<head>
 		<title>Real-time Web Chat with Socket.io</title>
+		<link href="http://bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="index.css" rel="stylesheet">
 	</head>
 
 	<body>
-		<textarea id = "chatBox"></textarea>
+		
+		<textarea style = "cursor: default;"id = "chatBox" readonly></textarea>
 		<div>
 			<input id = "chatMessageBox" type = "text"></input>
-			<button id = "sendButton">Send</button>
+			<a class = "btn btn-success" id = "sendButton">Send</a>
 		</div>
+		
+
+		<!-- INCLUDE SCRIPTS -->
+
 		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src = "http://twitter.github.io/bootstrap/assets/js/bootstrap.min.js"></script>
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src = "index.js"></script>
 	</body>
