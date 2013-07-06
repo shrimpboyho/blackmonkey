@@ -1,4 +1,10 @@
+// Create a socket
+
 var socket = io.connect('/');
+
+/* Create a blackmonkey instance
+
+var angrymonkey = */
 
 socket.on('returnMessage', function (data) {
 
