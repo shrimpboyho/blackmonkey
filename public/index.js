@@ -4,7 +4,7 @@ socket.on('returnMessage', function (data) {
 
 	// Update the chat box if the server contacts us
 
-	$('#chatBox').val(($('#chatBox').val() + '\n' + data.message));  
+	$('#chatBox').val(($('#chatBox').val() + '\n' + data.userIP + ": " + data.message));  
 
 });
 
