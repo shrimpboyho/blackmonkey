@@ -8,7 +8,11 @@ angrymonkey = new blackmonkey();
 
 angrymonkey.setSocket(socket);
 
-angrymonkey.setUserId("Guest");
+$('#nameSubmit').click(function(){
+
+	angrymonkey.setUserId($('#nameArea').val());
+
+});
 
 
 angrymonkey.onNewMessage(function(data){
@@ -31,6 +35,10 @@ $('#sendButton').click(function(){
 
 
 });
+
+// Ban someone by userId
+
+angrymonkey.banUser('narc');
 
 // Begin the chat
 

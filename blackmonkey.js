@@ -64,6 +64,14 @@ function initChat(){
 
   		});
 
+ 	 	// Check to see if a user needs to be banned
+
+  		socket.on('banMessage', function (data) {
+
+  			banList.push(data.userId.toString());
+
+  		});
+
 	});
 
 }

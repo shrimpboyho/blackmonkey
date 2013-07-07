@@ -1,0 +1,27 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'adduser' ]
+2 info using npm@1.2.14
+3 info using node@v0.10.0
+4 error Error: canceled
+4 error     at Interface.<anonymous> (c:\Program Files\nodejs\node_modules\npm\node_modules\read\lib\read.js:65:13)
+4 error     at Interface.EventEmitter.emit (events.js:92:17)
+4 error     at Interface._ttyWrite (readline.js:620:16)
+4 error     at ReadStream.onkeypress (readline.js:99:10)
+4 error     at ReadStream.EventEmitter.emit (events.js:98:17)
+4 error     at emitKey (readline.js:1089:12)
+4 error     at ReadStream.onData (readline.js:834:14)
+4 error     at ReadStream.EventEmitter.emit (events.js:95:17)
+4 error     at ReadStream.<anonymous> (_stream_readable.js:699:14)
+4 error     at ReadStream.EventEmitter.emit (events.js:92:17)
+5 error If you need help, you may report this log at:
+5 error     <http://github.com/isaacs/npm/issues>
+5 error or email it to:
+5 error     <npm-@googlegroups.com>
+6 error System Windows_NT 5.1.2600
+7 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "adduser"
+8 error cwd c:\Documents and Settings\Norbert Joseph\Desktop\blackmonkey
+9 error node -v v0.10.0
+10 error npm -v 1.2.14
+11 verbose exit [ 1, true ]

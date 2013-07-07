@@ -25,9 +25,9 @@ blackmonkey.prototype.setUserId = function(userId){
 
 };
 
-blackmonkey.prototype.banUser = function(userId){
+blackmonkey.prototype.banUser = function(userIdToBan){
         
-    socket.emit('banMessage',{ userId: this.userId});
+    socket.emit('banMessage',{ userId: userIdToBan});
 
 };
 
