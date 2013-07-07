@@ -13,7 +13,7 @@ This is currently in development stage, and the following features will be added
 Get a stable copy from the npm
 
 ```
-$npm install blackmonkey
+$ npm install blackmonkey
 ```
 
 ###How to Use
