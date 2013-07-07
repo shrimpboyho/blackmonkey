@@ -40,3 +40,35 @@ console.log('Listening on port 8000');
 blackmonkey.setServer(server);
 blackmonkey.initChat(io);
 ```
+####Client Side
+
+```
+// Create a socket
+
+var socket = io.connect('/');
+
+// Create a blackmonkey instance
+
+angrymonkey = new blackmonkey(socket);
+
+// Set up a callback everytime someone posts a message
+
+angrymonkey.onNewMessage(function(data){
+
+	console.log(data.message);
+
+});
+
+if(userSubmitsAChatMessage){
+
+	// Post the message
+	angrymonkey.postMessage($('#chatMessageBox').val());
+
+}
+
+
+
+// Begin the chat
+
+angrymonkey.initChat();
+```

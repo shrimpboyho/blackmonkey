@@ -2,11 +2,11 @@
 
 var socket = io.connect('/');
 
-/* Create a blackmonkey instance
+// Create a blackmonkey instance
 
-var angrymonkey = */
+angrymonkey = new blackmonkey(socket);
 
-socket.on('returnMessage', function (data) {
+angrymonkey.onNewMessage(function(data){
 
 	// Update the chat box if the server contacts us
 
@@ -17,8 +17,8 @@ socket.on('returnMessage', function (data) {
 $('#sendButton').click(function(){
 
 	// Post message to the server
-
-	socket.emit('postMessage',{ message: $('#chatMessageBox').val()});
+	
+	angrymonkey.postMessage($('#chatMessageBox').val());
 
 	// Clear the current message
 
@@ -26,3 +26,8 @@ $('#sendButton').click(function(){
 
 
 });
+
+// Begin the chat
+
+angrymonkey.initChat();
+

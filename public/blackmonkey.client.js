@@ -1,26 +1,40 @@
-function blackmonkey(socket){
-	
-	this.postMessage = postMessage;
-	this.onNewMessage = onNewMessage;
-	this.callbackOnNewMessageGiven;
-	
-	socket.on('returnMessage', function (data) {
-
-		callback(data);
-
-
-	});
-
-	function postMessage(messagestring){
-	
-		socket.emit('postMessage',{ message: messagestring});
-
-	}
-
-	function onNewMessage(callback){
-		this.callbackOnNewMessageGiven = callback;
-	}
-
-
+function blackmonkey (socket) {
+    
+    this.socket = socket;
 
 }
+
+blackmonkey.prototype = {
+    
+    constructor: blackmonkey,
+    
+    postMessage:function (messagestring)  {
+        
+        socket.emit('postMessage',{ message: messagestring});
+
+    },
+
+    onNewMessage:function(callback)  {
+
+        this.callback = callback;
+
+    },
+
+    banUser:function(){
+        
+
+    },
+    initChat:function(){
+    	
+    	var callbackhere = this.callback;
+
+    	socket.on('returnMessage', function (data) {
+
+			callbackhere(data);
+
+		});
+
+    }
+}
+
+
