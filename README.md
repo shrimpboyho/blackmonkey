@@ -71,3 +71,74 @@ if(userSubmitsAChatMessage){
 
 angrymonkey.initChat();
 ```
+
+##The Documentation
+
+###Client Side Docs
+
+####Creating an instance
+
+blackmonkey on the client-side can be used by creating an instance of the blackmonkey object.
+
+```
+angrymonkey = new blackmonkey();
+```
+
+blackmonkey needs to be bound to a socket and one pass in a socket in the contructor or using the ```setSocket()``` method:
+
+```
+// Create a socket using socket.io
+var socket = io.connect('/');
+
+// Set the socket using the constructor
+angrymonkey = new blackmonkey(socket);
+
+// Or set it using the method
+angrymonkey.setSocket(socket);
+```
+
+####Methods
+
+Various methods can be called upon.
+
+```
+// Sets the client's userId
+
+angrymonkey.setUserId("niceGuy");
+```
+
+```
+// Ban a user
+
+angrymonkey.banUser('narc');
+```
+
+```
+// Specify a callback everytime a new message is recieved from the chat server
+
+angrymonkey.onNewMessage(function(data){
+
+	alert(data.message);
+	alert(data.userId);
+	alert(data.userIP);  
+
+});
+```
+
+```
+// Post a message to the chat server
+
+angrymonkey.postMessage("Hi everyone!");
+```
+
+####Starting the client
+
+Once everything is specified, the client can be started using this method:
+
+```
+angrymonkey.initChat();
+```
+
+###Server side Docs
+
+{TODO}
