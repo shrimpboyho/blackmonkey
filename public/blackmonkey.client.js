@@ -9,7 +9,7 @@ function blackmonkey (socket) {
     
 blackmonkey.prototype.postMessage = function (messagestring)  {
         
-    socket.emit('postMessage',{ message: messagestring});
+    socket.emit('postMessage',{ message: messagestring, userId: this.userId});
 
 };
 
@@ -19,8 +19,15 @@ blackmonkey.prototype.onNewMessage = function(callback)  {
 
 };
 
-blackmonkey.prototype.banUser = function(){
+blackmonkey.prototype.setUserId = function(userId){
+
+    this.userId = userId;
+
+};
+
+blackmonkey.prototype.banUser = function(userId){
         
+    socket.emit('banMessage',{ userId: this.userId});
 
 };
 

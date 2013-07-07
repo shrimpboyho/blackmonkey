@@ -8,11 +8,14 @@ angrymonkey = new blackmonkey();
 
 angrymonkey.setSocket(socket);
 
+angrymonkey.setUserId("Guest");
+
+
 angrymonkey.onNewMessage(function(data){
 
 	// Update the chat box if the server contacts us
 
-	$('#chatBox').val(($('#chatBox').val() + '\n' + data.userIP + ": " + data.message));  
+	$('#chatBox').val(($('#chatBox').val() + '\n' + data.userId + ": " + data.message));  
 
 });
 

@@ -10,6 +10,8 @@ var userIPAddress;  // Represents the IP address of a client
 var serverGiven;    // A variable representing the server variable given
 var ioGiven;        // A varibale representing the socket.io varibale given
 
+var banList = new Array();        // Holds all the banned userId's
+
 /* The set server function */
 
 function setServer(server){
@@ -49,10 +51,17 @@ function initChat(){
 
  	 	socket.on('postMessage', function (data) {
 
-  			// If so, send the chat message to all clients
+  			// Check to make sure the user is not banned
 
-  			ioGiven.sockets.emit('returnMessage', { message: data.message, userIP: userIPAddress });
-  	
+  			var i;
+
+  			i = banList.indexOf(data.userId);
+
+  			if(i == -1){
+
+  				ioGiven.sockets.emit('returnMessage', { message: data.message, userIP: userIPAddress, userId: data.userId });
+  			}
+
   		});
 
 	});
@@ -64,4 +73,4 @@ function initChat(){
 exports.initChat = initChat;
 exports.setServer = setServer;
 exports.setSocket = setSocket;
-
+exports.banList = banList;
