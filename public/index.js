@@ -4,7 +4,9 @@ var socket = io.connect('/');
 
 // Create a blackmonkey instance
 
-angrymonkey = new blackmonkey(socket);
+angrymonkey = new blackmonkey();
+
+angrymonkey.setSocket(socket);
 
 angrymonkey.onNewMessage(function(data){
 

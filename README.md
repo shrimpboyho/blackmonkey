@@ -38,8 +38,13 @@ console.log('Listening on port 8000');
 // Pass variables into blackmonkey
 
 blackmonkey.setServer(server);
-blackmonkey.initChat(io);
+blackmonkey.setSocket(io);
+
+// Start blackmonkey
+
+blankmonkey.initChat();
 ```
+
 ####Client Side
 
 ```
@@ -47,7 +52,7 @@ blackmonkey.initChat(io);
 
 var socket = io.connect('/');
 
-// Create a blackmonkey instance
+// Create a blackmonkey instance and pass a socket into the constructor
 
 angrymonkey = new blackmonkey(socket);
 

@@ -20,4 +20,5 @@ console.log('Listening on port 8000');
 // Pass into blackmonkey
 
 blackmonkey.setServer(server);
-blackmonkey.initChat(io);
+blackmonkey.setSocket(io);
+blackmonkey.initChat();

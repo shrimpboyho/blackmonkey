@@ -27,13 +27,15 @@ function setServer(server){
 	});
 }
 
+/* The setSocket function*/
+
+function setSocket(io){
+	ioGiven = io;
+}
+
 /* The initialize chat function */
 
-function initChat(io){
-
-	// Create a global variable
-
-	ioGiven = io;
+function initChat(){
 
 	// Have it listen to the server
 
@@ -61,4 +63,5 @@ function initChat(io){
 
 exports.initChat = initChat;
 exports.setServer = setServer;
+exports.setSocket = setSocket;
 

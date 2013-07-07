@@ -1,40 +1,46 @@
 function blackmonkey (socket) {
     
+    if(socket){
+        this.socket = socket;
+    }
+
+}
+
+    
+blackmonkey.prototype.postMessage = function (messagestring)  {
+        
+    socket.emit('postMessage',{ message: messagestring});
+
+};
+
+blackmonkey.prototype.onNewMessage = function(callback)  {
+
+    this.callback = callback;
+
+};
+
+blackmonkey.prototype.banUser = function(){
+        
+
+};
+
+blackmonkey.prototype.setSocket = function(socket){
+
     this.socket = socket;
 
-}
+};
 
-blackmonkey.prototype = {
-    
-    constructor: blackmonkey,
-    
-    postMessage:function (messagestring)  {
-        
-        socket.emit('postMessage',{ message: messagestring});
-
-    },
-
-    onNewMessage:function(callback)  {
-
-        this.callback = callback;
-
-    },
-
-    banUser:function(){
-        
-
-    },
-    initChat:function(){
+blackmonkey.prototype.initChat = function(){
     	
-    	var callbackhere = this.callback;
+    var callbackhere = this.callback;
 
-    	socket.on('returnMessage', function (data) {
+    socket.on('returnMessage', function (data) {
 
-			callbackhere(data);
+		callbackhere(data);
 
-		});
+	});
 
-    }
-}
+};
+
 
 
