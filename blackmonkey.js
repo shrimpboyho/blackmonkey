@@ -22,10 +22,11 @@ function setServer(server){
 
 	// Grab the IP of the client
 
-	server.on('request', function(req, res){
-
-		userIPAddress = req.connection.remoteAddress.toString();
-
+	server.on("connection", function(socket) {
+    
+	    var endpoint = socket.address();
+	    userIPAddress = endpoint.address;
+	
 	});
 }
 
@@ -69,6 +70,14 @@ function initChat(){
   		socket.on('banMessage', function (data) {
 
   			banList.push(data.userId.toString());
+
+  		});
+
+  		// Handle a whisper message
+
+  		socket.on('whisperMessage', function (data) {
+
+  			ioGiven.sockets.emit('returnWhisper', { message: data.message, srcId: data.srcId , destUser: data.destUser});
 
   		});
 

@@ -23,6 +23,14 @@ angrymonkey.onNewMessage(function(data){
 
 });
 
+angrymonkey.onNewWhisper(function(data){
+
+	// Update the chat box if the server contacts us with a whisper
+
+	$('#chatBox').val(($('#chatBox').val() + '\n' + "Whisper From: " + data.srcId + " : " + data.message));  
+
+});
+
 $('#sendButton').click(function(){
 
 	// Post message to the server
@@ -32,6 +40,19 @@ $('#sendButton').click(function(){
 	// Clear the current message
 
 	$('#chatMessageBox').val("");
+
+
+});
+
+$('#sendWhisperButton').click(function(){
+
+	// Post message to the server
+	
+	angrymonkey.whisperMessage($('#whisperMessageBox').val(),$("#whisperNameArea").val());
+
+	// Clear the current whisper message
+
+	$('#whisperMessageBox').val("");
 
 
 });

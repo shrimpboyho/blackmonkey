@@ -133,9 +133,26 @@ angrymonkey.onNewMessage(function(data){
 ```
 
 ```
-// Post a message to the chat server
+// Specify a callback everytime a new whisper message is recieved from the chat server
+
+angrymonkey.onNewWhisper(function(data){
+
+	alert("Whisper From: " + data.srcId);
+	alert("Here's the message: " + data.message);  
+
+});
+```
+
+```
+// Post a message to the chat server (specify a message)
 
 angrymonkey.postMessage("Hi everyone!");
+```
+
+```
+// Send a whisper message to the chat server (specify a message and a userId to send to)
+
+angrymonkey.whisperMessage("Nice name!","derp123");
 ```
 
 ####Starting the client
@@ -148,4 +165,30 @@ angrymonkey.initChat();
 
 ###Server side Docs
 
-{TODO}
+####Setting up the module
+
+Use ```blackmonkey``` the same way you'd use any ordinary module. Just require it:
+
+```
+var blackmonkey = require('blackmonkey');
+```
+
+Bind the blackmonkey to an HTTP server like this:
+
+```
+blackmonkey.setServer(server);
+```
+
+Finally bind it to some ```socket.io``` websockets:
+
+```
+var io = require('socket.io');
+blackmonkey.setSocket(io);
+```
+####Starting the client
+
+Once everything is specified, the server can be started using this method:
+
+```
+blackmonkey.initChat();
+```
