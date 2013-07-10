@@ -1,4 +1,4 @@
-blackmonkey
+blackmonkey [![Build Status](https://travis-ci.org/shrimpboyho/blackmonkey.png?branch=master)](https://travis-ci.org/shrimpboyho/blackmonkey)
 ====
 
 A chat module built with ```node.js``` using ```socket.io```.
