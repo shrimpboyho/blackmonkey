@@ -47,6 +47,12 @@ blackmonkey.prototype.banUser = function(userIdToBan){
 
 };
 
+blackmonkey.prototype.unbanUser = function(userIdToUnBan){
+        
+    socket.emit('unbanMessage',{ userId: userIdToUnBan });
+
+};
+
 blackmonkey.prototype.setSocket = function(socket){
 
     this.socket = socket;

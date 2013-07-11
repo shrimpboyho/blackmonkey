@@ -12,6 +12,13 @@ var ioGiven;        // A varibale representing the socket.io varibale given
 
 var banList = new Array();        // Holds all the banned userId's
 
+/* An array searching function we are using */
+
+Array.prototype.contains = function(element){
+    return this.indexOf(element) > -1;
+};
+
+
 /* The set server function */
 
 function setServer(server){
@@ -28,6 +35,8 @@ function setServer(server){
 	    userIPAddress = endpoint.address;
 	
 	});
+
+	/* TODO: find a way to serve the client javascript file */
 }
 
 /* The setSocket function*/
@@ -68,9 +77,21 @@ function initChat(){
  	 	// Check to see if a user needs to be banned
 
   		socket.on('banMessage', function (data) {
+			
+  			/* TODO: Check for duplicates in the banlist*/
 
   			banList.push(data.userId.toString());
+  			console.log("Just banned: " + data.userId.toString());
+  					
+  		});
 
+  		// Check to see if a user needs to be unbanned
+
+  		socket.on('unbanMessage', function (data) {
+
+  			banList.splice(banList.indexOf(data.userId.toString()),1);
+  			console.log("Just unbanned: " + data.userId.toString());
+  			
   		});
 
   		// Handle a whisper message

@@ -57,11 +57,12 @@ $('#sendWhisperButton').click(function(){
 
 });
 
-// Ban someone by userId
-
-angrymonkey.banUser('narc');
-
 // Begin the chat
 
 angrymonkey.initChat();
 
+// Ban someone by userId
+
+angrymonkey.banUser('narc');
+angrymonkey.banUser('lark');
+angrymonkey.unbanUser('narc');
