@@ -64,5 +64,6 @@ angrymonkey.initChat();
 // Ban someone by userId
 
 angrymonkey.banUser('narc');
+angrymonkey.banUser('narc');
 angrymonkey.banUser('lark');
 angrymonkey.unbanUser('narc');

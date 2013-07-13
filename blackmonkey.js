@@ -1,3 +1,22 @@
+/*
+
+This file is part of blackmonkey.
+
+blackmonkey is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+blackmonkey is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with blackmonkey.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
 /* Include the things we need */
 
 var expressREQUIRE = require('express');
@@ -77,12 +96,21 @@ function initChat(){
  	 	// Check to see if a user needs to be banned
 
   		socket.on('banMessage', function (data) {
-			
-  			/* TODO: Check for duplicates in the banlist*/
 
-  			banList.push(data.userId.toString());
-  			console.log("Just banned: " + data.userId.toString());
-  					
+        var i;
+
+        for(i = 0; i < banList.length; i++){
+          if(banList[i] == data.userId.toString()){
+            console.log("Got a request to ban the user " + data.userId.toString() + ", however they are already on the ban list.");
+            break;
+          }
+        }
+
+        if(i == banList.length){
+          banList.push(data.userId.toString());
+          console.log("Just banned: " + data.userId.toString());          
+        }
+
   		});
 
   		// Check to see if a user needs to be unbanned
