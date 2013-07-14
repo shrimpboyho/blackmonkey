@@ -19,40 +19,47 @@ along with blackmonkey.  If not, see <http://www.gnu.org/licenses/>.
 
 var globalID; // Very sensitive variable do not change!
 
-function blackmonkey (socket) {
-    
-    if(socket){
+function blackmonkey(socket) {
+
+    if (socket) {
         this.socket = socket;
     }
 
 }
 
-    
-blackmonkey.prototype.postMessage = function (messagestring)  {
-        
-    socket.emit('postMessage',{ message: messagestring, userId: this.userId});
+
+blackmonkey.prototype.postMessage = function(messagestring) {
+
+    socket.emit('postMessage', {
+        message: messagestring,
+        userId: this.userId
+    });
 
 };
 
-blackmonkey.prototype.whisperMessage = function (messagestring,destUser)  {
-        
-    socket.emit('whisperMessage',{ message: messagestring, destUser: destUser, srcId: this.userId});
+blackmonkey.prototype.whisperMessage = function(messagestring, destUser) {
+
+    socket.emit('whisperMessage', {
+        message: messagestring,
+        destUser: destUser,
+        srcId: this.userId
+    });
 
 };
 
-blackmonkey.prototype.onNewMessage = function(callback)  {
+blackmonkey.prototype.onNewMessage = function(callback) {
 
     this.callbackForMessage = callback;
 
 };
 
-blackmonkey.prototype.onNewWhisper = function(callback)  {
+blackmonkey.prototype.onNewWhisper = function(callback) {
 
     this.callbackForWhisper = callback;
 
 };
 
-blackmonkey.prototype.setUserId = function(userId){
+blackmonkey.prototype.setUserId = function(userId) {
 
     this.userId = userId;
     globalID = userId;
@@ -60,52 +67,53 @@ blackmonkey.prototype.setUserId = function(userId){
 
 };
 
-blackmonkey.prototype.banUser = function(userIdToBan){
-        
-    socket.emit('banMessage',{ userId: userIdToBan });
+blackmonkey.prototype.banUser = function(userIdToBan) {
+
+    socket.emit('banMessage', {
+        userId: userIdToBan
+    });
 
 };
 
-blackmonkey.prototype.unbanUser = function(userIdToUnBan){
-        
-    socket.emit('unbanMessage',{ userId: userIdToUnBan });
+blackmonkey.prototype.unbanUser = function(userIdToUnBan) {
+
+    socket.emit('unbanMessage', {
+        userId: userIdToUnBan
+    });
 
 };
 
-blackmonkey.prototype.setSocket = function(socket){
+blackmonkey.prototype.setSocket = function(socket) {
 
     this.socket = socket;
 
 };
 
-blackmonkey.prototype.initChat = function(){
-    	
+blackmonkey.prototype.initChat = function() {
+
     var callbackhere = this.callbackForMessage;
     var callbackhereforwhisper = this.callbackForWhisper;
 
     // Call user specified callback when a new message is posted
 
-    socket.on('returnMessage', function (data) {
+    socket.on('returnMessage', function(data) {
 
-		callbackhere(data);
+        callbackhere(data);
 
-	});
-    
+    });
+
     // Handle whisper message response from the server
 
-    socket.on('returnWhisper', function (data) {
+    socket.on('returnWhisper', function(data) {
 
         console.log("Send to: " + data.destUser + ' Our id: ' + globalID);
 
-        if(data.destUser == globalID){
-           
-           callbackhereforwhisper(data);
-           
+        if (data.destUser == globalID) {
+
+            callbackhereforwhisper(data);
+
         }
 
     });
 
 };
-
-
-
