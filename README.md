@@ -12,7 +12,7 @@ This is currently in development stage, and the following features will be added
 
 Get a stable copy from the npm
 
-```
+```bash
 $ npm install blackmonkey
 ```
 
@@ -20,7 +20,7 @@ $ npm install blackmonkey
 
 ####Server side
 
-```
+```js
 // Include the things we need
 
 var express = require('express');
@@ -54,7 +54,7 @@ blankmonkey.initChat();
 
 ####Client Side
 
-```
+```js
 // Create a socket
 
 var socket = io.connect('/');
@@ -87,13 +87,13 @@ angrymonkey.initChat();
 
 blackmonkey on the client-side can be used by creating an instance of the blackmonkey object.
 
-```
+```js
 angrymonkey = new blackmonkey();
 ```
 
 blackmonkey needs to be bound to a socket and one pass in a socket in the contructor or using the ```setSocket()``` method:
 
-```
+```js
 // Create a socket using socket.io
 var socket = io.connect('/');
 
@@ -108,19 +108,19 @@ angrymonkey.setSocket(socket);
 
 Various methods can be called upon.
 
-```
+```js
 // Sets the client's userId
 
 angrymonkey.setUserId("niceGuy");
 ```
 
-```
+```js
 // Ban a user
 
 angrymonkey.banUser('narc');
 ```
 
-```
+```js
 // Specify a callback everytime a new message is recieved from the chat server
 
 angrymonkey.onNewMessage(function(data){
@@ -132,7 +132,7 @@ angrymonkey.onNewMessage(function(data){
 });
 ```
 
-```
+```js
 // Specify a callback everytime a new whisper message is recieved from the chat server
 
 angrymonkey.onNewWhisper(function(data){
@@ -143,13 +143,13 @@ angrymonkey.onNewWhisper(function(data){
 });
 ```
 
-```
+```js
 // Post a message to the chat server (specify a message)
 
 angrymonkey.postMessage("Hi everyone!");
 ```
 
-```
+```js
 // Send a whisper message to the chat server (specify a message and a userId to send to)
 
 angrymonkey.whisperMessage("Nice name!","derp123");
@@ -159,7 +159,7 @@ angrymonkey.whisperMessage("Nice name!","derp123");
 
 Once everything is specified, the client can be started using this method:
 
-```
+```js
 angrymonkey.initChat();
 ```
 
@@ -169,19 +169,19 @@ angrymonkey.initChat();
 
 Use ```blackmonkey``` the same way you'd use any ordinary module. Just require it:
 
-```
+```js
 var blackmonkey = require('blackmonkey');
 ```
 
 Bind the blackmonkey to an HTTP server like this:
 
-```
+```js
 blackmonkey.setServer(server);
 ```
 
 Finally bind it to some ```socket.io``` websockets:
 
-```
+```js
 var io = require('socket.io');
 blackmonkey.setSocket(io);
 ```
@@ -189,6 +189,6 @@ blackmonkey.setSocket(io);
 
 Once everything is specified, the server can be started using this method:
 
-```
+```js
 blackmonkey.initChat();
 ```
