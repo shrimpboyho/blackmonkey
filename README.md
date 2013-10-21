@@ -1,5 +1,6 @@
-blackmonkey [![Build Status](https://travis-ci.org/shrimpboyho/blackmonkey.png?branch=master)](https://travis-ci.org/shrimpboyho/blackmonkey)
-====
+[blackmonkey]() - A Node.js Chat Framework Built Atop of Socket.io
+===============
+[![Build Status](https://drone.io/github.com/shrimpboyho/blackmonkey/status.png)](https://drone.io/github.com/shrimpboyho/blackmonkey/latest)
 
 A chat module built with ```node.js``` using ```socket.io```.
 
