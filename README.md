@@ -23,33 +23,27 @@ $ npm install blackmonkey
 
 ```js
 // Include the things we need
-
 var express = require('express');
 var io = require('socket.io');
 var http = require('http');
 var blackmonkey = require('./blackmonkey.js');
 
 // Create the express app that serves static pages
-
 var app = express();
 app.use("/", express.static(__dirname + '/public/'));
 
 // Get the http server from the app
-
 var server = http.createServer(app);
 
 // Have the server listen to port 8000
-
 server.listen(8000);
 console.log('Listening on port 8000');
 
 // Pass variables into blackmonkey
-
 blackmonkey.setServer(server);
 blackmonkey.setSocket(io);
 
 // Start blackmonkey
-
 blankmonkey.initChat();
 ```
 
@@ -57,15 +51,12 @@ blankmonkey.initChat();
 
 ```js
 // Create a socket
-
 var socket = io.connect('/');
 
 // Create a blackmonkey instance and pass a socket into the constructor
-
 angrymonkey = new blackmonkey(socket);
 
 // Set up a callback everytime someone posts a message
-
 angrymonkey.onNewMessage(function(data){
 	console.log(data.message);
 });
@@ -76,7 +67,6 @@ if(userSubmitsAChatMessage){
 }
 
 // Begin the chat
-
 angrymonkey.initChat();
 ```
 
@@ -111,19 +101,16 @@ Various methods can be called upon.
 
 ```js
 // Sets the client's userId
-
 angrymonkey.setUserId("niceGuy");
 ```
 
 ```js
 // Ban a user
-
 angrymonkey.banUser('narc');
 ```
 
 ```js
 // Specify a callback everytime a new message is recieved from the chat server
-
 angrymonkey.onNewMessage(function(data){
 
 	alert(data.message);
@@ -135,7 +122,6 @@ angrymonkey.onNewMessage(function(data){
 
 ```js
 // Specify a callback everytime a new whisper message is recieved from the chat server
-
 angrymonkey.onNewWhisper(function(data){
 
 	alert("Whisper From: " + data.srcId);
@@ -146,13 +132,11 @@ angrymonkey.onNewWhisper(function(data){
 
 ```js
 // Post a message to the chat server (specify a message)
-
 angrymonkey.postMessage("Hi everyone!");
 ```
 
 ```js
 // Send a whisper message to the chat server (specify a message and a userId to send to)
-
 angrymonkey.whisperMessage("Nice name!","derp123");
 ```
 
